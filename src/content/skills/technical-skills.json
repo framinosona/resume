@@ -1,0 +1,282 @@
+[
+  {
+    "category": "Programming Languages",
+    "name": "C#",
+    "level": "expert"
+  },
+  {
+    "category": "Programming Languages",
+    "name": "Bash",
+    "level": "advanced"
+  },
+  {
+    "category": "Programming Languages",
+    "name": "Kotlin",
+    "level": "intermediate"
+  },
+  {
+    "category": "Programming Languages",
+    "name": "Java",
+    "level": "intermediate"
+  },
+  {
+    "category": "Programming Languages",
+    "name": "Swift",
+    "level": "intermediate"
+  },
+  {
+    "category": "Programming Languages",
+    "name": "Objective-C",
+    "level": "intermediate"
+  },
+  {
+    "category": "Web Technologies",
+    "name": "PHP",
+    "level": "advanced"
+  },
+  {
+    "category": "Web Technologies",
+    "name": "JavaScript",
+    "level": "advanced"
+  },
+  {
+    "category": "Web Technologies",
+    "name": "HTML5",
+    "level": "advanced"
+  },
+  {
+    "category": "Web Technologies",
+    "name": "CSS/LESS",
+    "level": "advanced"
+  },
+  {
+    "category": "Web Technologies",
+    "name": "jQuery",
+    "level": "advanced"
+  },
+  {
+    "category": "Web Technologies",
+    "name": "Handlebars",
+    "level": "intermediate"
+  },
+  {
+    "category": "Web Technologies",
+    "name": "Babylon.js",
+    "level": "intermediate"
+  },
+  {
+    "category": "Frameworks & Platforms",
+    "name": ".NET Core/.NET",
+    "level": "expert"
+  },
+  {
+    "category": "Frameworks & Platforms",
+    "name": "Xamarin / .NET MAUI",
+    "level": "expert"
+  },
+  {
+    "category": "Frameworks & Platforms",
+    "name": "Astro",
+    "level": "intermediate"
+  },
+  {
+    "category": "Content Management",
+    "name": "Ghost CMS",
+    "level": "advanced"
+  },
+  {
+    "category": "Content Management",
+    "name": "WordPress",
+    "level": "intermediate"
+  },
+  {
+    "category": "Platforms",
+    "name": "Android (Native & MAUI)",
+    "level": "expert"
+  },
+  {
+    "category": "Platforms",
+    "name": "iOS (Native & MAUI)",
+    "level": "expert"
+  },
+  {
+    "category": "Platforms",
+    "name": "MacCatalyst",
+    "level": "advanced"
+  },
+  {
+    "category": "Platforms",
+    "name": "Windows (UWP & MAUI)",
+    "level": "expert"
+  },
+  {
+    "category": "Platforms",
+    "name": "Microsoft Azure",
+    "level": "intermediate"
+  },
+  {
+    "category": "DevOps & CI/CD",
+    "name": "GitHub Actions",
+    "level": "expert"
+  },
+  {
+    "category": "DevOps & CI/CD",
+    "name": "Azure DevOps",
+    "level": "advanced"
+  },
+  {
+    "category": "GitHub Ecosystem",
+    "name": "GitHub Copilot",
+    "level": "advanced"
+  },
+  {
+    "category": "GitHub Ecosystem",
+    "name": "GitHub Wiki",
+    "level": "advanced"
+  },
+  {
+    "category": "GitHub Ecosystem",
+    "name": "GitHub Repositories",
+    "level": "advanced"
+  },
+  {
+    "category": "Atlassian Tools",
+    "name": "Jira",
+    "level": "advanced"
+  },
+  {
+    "category": "Atlassian Tools",
+    "name": "Confluence",
+    "level": "advanced"
+  },
+  {
+    "category": "Atlassian Tools",
+    "name": "Bitbucket",
+    "level": "expert"
+  },
+  {
+    "category": "Development Tools",
+    "name": "Visual Studio",
+    "level": "advanced"
+  },
+  {
+    "category": "Development Tools",
+    "name": "JetBrains Rider / ReSharper",
+    "level": "expert"
+  },
+  {
+    "category": "Development Tools",
+    "name": "Visual Studio Code",
+    "level": "expert"
+  },
+  {
+    "category": "Development Tools",
+    "name": "PHPStorm",
+    "level": "advanced"
+  },
+  {
+    "category": "Development Tools",
+    "name": "WebStorm",
+    "level": "advanced"
+  },
+  {
+    "category": "Development Tools",
+    "name": "GitKraken",
+    "level": "expert"
+  },
+  {
+    "category": "Specialized Technologies",
+    "name": "Bluetooth Stack",
+    "level": "expert"
+  },
+  {
+    "category": "Specialized Technologies",
+    "name": "USB API",
+    "level": "advanced"
+  },
+  {
+    "category": "Specialized Technologies",
+    "name": "Nordic DFU",
+    "level": "expert"
+  },
+  {
+    "category": "Specialized Technologies",
+    "name": "NuGet Packaging",
+    "level": "expert"
+  },
+  {
+    "category": "Media & Graphics",
+    "name": "FFmpeg",
+    "level": "intermediate"
+  },
+  {
+    "category": "Media & Graphics",
+    "name": "Skia",
+    "level": "advanced"
+  },
+  {
+    "category": "Media & Graphics",
+    "name": "Adobe Photoshop",
+    "level": "expert"
+  },
+  {
+    "category": "Architecture & Leadership",
+    "name": "Cross-Platform Development (MVVM-MVU)",
+    "level": "expert"
+  },
+  {
+    "category": "Architecture & Leadership",
+    "name": "SDK Development",
+    "level": "expert"
+  },
+  {
+    "category": "Architecture & Leadership",
+    "name": "Game Development",
+    "level": "intermediate"
+  },
+  {
+    "category": "Architecture & Leadership",
+    "name": "Technology Research",
+    "level": "expert"
+  },
+  {
+    "category": "Architecture & Leadership",
+    "name": "R&D Strategy",
+    "level": "expert"
+  },
+  {
+    "category": "Architecture & Leadership",
+    "name": "Team Leadership",
+    "level": "advanced"
+  },
+  {
+    "category": "Architecture & Leadership",
+    "name": "Agile / Scrum",
+    "level": "advanced"
+  },
+  {
+    "category": "Languages",
+    "name": "🇫🇷 French",
+    "level": "expert"
+  },
+  {
+    "category": "Languages",
+    "name": "🇬🇧 English",
+    "level": "expert"
+  },
+  {
+    "category": "Languages",
+    "name": "🇳🇴 Norwegian",
+    "level": "intermediate"
+  },
+  {
+    "category": "Languages",
+    "name": "🇩🇪 German",
+    "level": "beginner"
+  },
+  {
+    "category": "Languages",
+    "name": "🇷🇺 Russian",
+    "level": "learning"
+  }
+]

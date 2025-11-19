@@ -1,0 +1,223 @@
+---
+import { getCollection } from "astro:content";
+import MainLayout from "../layouts/MainLayout.astro";
+
+const featuredProjects = await getCollection(
+  "projects",
+  ({ data }) => data.isFeatured
+);
+featuredProjects.sort(
+  (a, b) => b.data.startDate.valueOf() - a.data.startDate.valueOf()
+);
+---
+
+<MainLayout
+  title="Francois Raminosona - Full-Stack Developer & Photographer"
+  description="Welcome to my digital portfolio showcasing full-stack development projects, and professional journey"
+>
+  <!-- Hero Section -->
+  <section
+    class="relative text-white"
+    style="background-image: url('banners/banner_framinosona_4.webp'); background-size: cover; background-position: center; background-blend-mode: overlay;"
+  >
+    <!-- Light mode overlay - light blue uniform -->
+    <div class="absolute inset-0 bg-slate-200/80 dark:hidden"></div>
+    <!-- Dark mode overlay - dark blue uniform -->
+    <div class="absolute inset-0 bg-slate-800/90 hidden dark:block"></div>
+
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32">
+      <div class="text-center">
+        <img
+          src="images/profile/profile_1.jpg"
+          alt="Francois Raminosona"
+          class="w-32 h-32 rounded-full mx-auto mb-12 border-4 border-white shadow-lg"
+        />
+        <h1
+          class="text-4xl sm:text-5xl lg:text-6xl font-bold mb-12 text-gray-900 dark:text-white"
+        >
+          Hi, I'm <span class="text-brand-primary dark:text-yellow-400"
+            >Francois Raminosona</span
+          >
+        </h1>
+        <p
+          class="text-xl sm:text-2xl mb-12 text-brand-dark dark:text-gray-200 max-w-3xl mx-auto"
+        >
+          .NET / Mobile / Tech-team Lead / Software architect
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a
+            href="/resume"
+            class="inline-flex items-center px-8 py-3 border border-transparent text-lg font-medium rounded-lg bg-brand-dark hover:bg-brand-primary text-white dark:bg-yellow-400 dark:hover:bg-yellow-300 dark:text-gray-900 transition-colors shadow-lg"
+          >
+            View Resume
+          </a>
+          <a
+            href="/projects"
+            class="inline-flex items-center px-8 py-3 border-2 border-brand-primary text-lg font-medium rounded-lg text-brand-primary hover:bg-brand-primary hover:text-white dark:border-white dark:text-white dark:hover:bg-white dark:hover:text-gray-900 transition-colors shadow-lg"
+          >
+            Explore Projects
+          </a>
+        </div>
+      </div>
+
+      <!-- Quick Stats -->
+      <div class="mt-16 grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+        <div>
+          <div
+            class="text-3xl font-bold text-brand-primary dark:text-yellow-400"
+          >
+            {new Date().getFullYear() - 2013} 💼
+          </div>
+          <div class="text-gray-600 dark:text-gray-300">Years Experience</div>
+        </div>
+        <div>
+          <div
+            class="text-3xl font-bold text-brand-primary dark:text-yellow-400"
+          >
+            40+ 🌍
+          </div>
+          <div class="text-gray-600 dark:text-gray-300">Countries Visited</div>
+        </div>
+        <div>
+          <div
+            class="text-3xl font-bold text-brand-primary dark:text-yellow-400"
+          >
+            6 🏆
+          </div>
+          <div class="text-gray-600 dark:text-gray-300">
+            Hackathon Victories
+          </div>
+        </div>
+        <div>
+          <div
+            class="text-3xl font-bold text-brand-primary dark:text-yellow-400"
+          >
+            ∞ ☕
+          </div>
+          <div class="text-gray-600 dark:text-gray-300">Cups of Coffee</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Projects -->
+  <section class="py-16 bg-white dark:bg-slate-900">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+          Featured Projects
+        </h2>
+        <p class="text-xl text-gray-600 dark:text-gray-300">
+          Showcase of my latest and most impactful development work
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {
+          featuredProjects.slice(0, 3).map((project) => (
+            <article class="bg-white dark:bg-slate-800 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+              {project.data.bannerImage && (
+                <img
+                  src={project.data.bannerImage}
+                  alt={project.data.title}
+                  class="w-full h-48 object-cover"
+                />
+              )}
+              <div class="p-6">
+                <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">
+                  {project.data.title}
+                </h3>
+                <p class="text-gray-600 dark:text-gray-300 mb-4">
+                  {project.data.description}
+                </p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  {project.data.technologies.slice(0, 3).map((tech) => (
+                    <span class="px-3 py-1 bg-brand-primary/10 text-brand-primary text-sm rounded-full">
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+                <a
+                  href={`/projects/${project.slug}`}
+                  class="inline-flex items-center text-brand-primary hover:text-brand-secondary font-medium"
+                >
+                  Learn More
+                  <svg
+                    class="w-4 h-4 ml-2"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M9 5l7 7-7 7"
+                    />
+                  </svg>
+                </a>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+
+      <div class="text-center mt-12">
+        <a
+          href="/projects"
+          class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-lg text-white bg-brand-primary hover:bg-brand-secondary transition-colors"
+        >
+          View All Projects
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Overview -->
+  <section class="py-16 bg-gray-50 dark:bg-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+          Technical Skills
+        </h2>
+        <p class="text-xl text-gray-600 dark:text-gray-300">
+          Technologies and tools I work with
+        </p>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
+        {
+          [
+            "C# / .NET",
+            "MAUI",
+            "Bluetooth",
+            ".NET",
+            "Azure",
+            "Git / Github",
+            "Bash",
+            "CI / CD",
+            "Astro",
+            "PHP Object",
+            "HTML5/CSS3/JS",
+            "UnitTests",
+          ].map((skill) => (
+            <div class="bg-white dark:bg-slate-900 rounded-lg p-4 text-center shadow-sm hover:shadow-md transition-shadow">
+              <div class="text-lg font-semibold text-gray-900 dark:text-white">
+                {skill}
+              </div>
+            </div>
+          ))
+        }
+      </div>
+
+      <div class="text-center mt-12">
+        <a
+          href="/resume"
+          class="inline-flex items-center px-6 py-3 border border-brand-primary text-base font-medium rounded-lg text-brand-primary bg-white dark:bg-slate-900 hover:bg-brand-primary hover:text-white transition-colors"
+        >
+          View Full Resume
+        </a>
+      </div>
+    </div>
+  </section>
+</MainLayout>

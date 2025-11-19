@@ -1,0 +1,619 @@
+---
+import { getCollection } from "astro:content";
+import MainLayout from "../layouts/MainLayout.astro";
+
+const jobs = await getCollection("jobs");
+const education = await getCollection("education");
+const diplomas = await getCollection("diplomas");
+const hackathons = await getCollection("hackathons");
+const skills = await getCollection("skills");
+
+// Sort by date (most recent first)
+jobs.sort((a, b) => b.data.startDate.valueOf() - a.data.startDate.valueOf());
+// Education sorting - check if items have startDate or endDate
+education.sort((a, b) => {
+  const aDate = a.data.endDate || a.data.startDate;
+  const bDate = b.data.endDate || b.data.startDate;
+  return bDate.valueOf() - aDate.valueOf();
+});
+diplomas.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+hackathons.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+// Group skills by category
+const skillsByCategory =
+  skills.length > 0
+    ? skills[0].data.reduce(
+        (acc, skill) => {
+          const category = skill.category;
+          if (!acc[category]) acc[category] = [];
+          acc[category].push(skill);
+          return acc;
+        },
+        {} as Record<string, any[]>
+      )
+    : {};
+---
+
+<MainLayout
+  title="Resume - Francois Raminosona"
+  description="Professional resume showcasing experience, education, skills, and achievements in mobile development and software engineering"
+  image="images/banners/banner_3.jpg"
+>
+  <div class="bg-white dark:bg-slate-900 min-h-screen">
+    <!-- Header -->
+    <header
+      class="bg-gradient-to-r from-brand-primary to-brand-light text-white py-16"
+    >
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center">
+          <img
+            src="images/profile/profile_5.jpg"
+            alt="Francois Raminosona"
+            class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-white shadow-lg"
+          />
+          <h1 class="text-4xl font-bold mb-4">Francois Raminosona</h1>
+          <p class="text-xl text-blue-100 mb-6">Senior .NET Mobile Engineer</p>
+          <div class="flex flex-wrap justify-center gap-6 text-sm">
+            <a
+              href="mailto:framinosona@hotmail.fr"
+              class="flex items-center hover:text-blue-200"
+            >
+              <svg
+                class="w-4 h-4 mr-2"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                ></path>
+              </svg>
+              framinosona@hotmail.fr
+            </a>
+            <a
+              href="https://linkedin.com/in/framinosona"
+              class="flex items-center hover:text-blue-200"
+            >
+              <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"
+                ></path>
+              </svg>
+              LinkedIn
+            </a>
+            <a
+              href="https://github.com/framinosona"
+              class="flex items-center hover:text-blue-200"
+            >
+              <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
+                ></path>
+              </svg>
+              GitHub
+            </a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <!-- Professional Summary -->
+      <section class="mb-12">
+        <div class="bg-gray-50 dark:bg-slate-800 rounded-lg p-6">
+          <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+            <b>Senior .NET Mobile Engineer</b> with 12+ years of expertise in cross-platform
+            development and technical leadership. Specialized in <b
+              >Xamarin/.NET MAUI, C#, and Azure cloud technologies</b
+            > with a proven track record of delivering innovative mobile solutions
+            for healthcare and enterprise clients. Expert in Bluetooth stack integration,
+            hardware communication, and SDK development. Microsoft Student Partner
+            alumnus and early Xamarin adopter with multiple hackathon victories.
+            Passionate about R&D, emerging technologies, and leading high-performance
+            development teams in complex technical environments.
+          </p>
+        </div>
+      </section>
+
+      <!-- Professional Experience -->
+      <section class="mb-12">
+        <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+          Professional Experience
+        </h2>
+        <div class="space-y-8">
+          {
+            jobs.map((job) => (
+              <article class="bg-white dark:bg-slate-800 rounded-lg p-6 shadow-sm border border-gray-200 dark:border-gray-700">
+                <div class="flex flex-col sm:flex-row sm:justify-between mb-4">
+                  <div class="flex flex-row">
+                    {job.data.logo && (
+                      <img
+                        src={job.data.logo}
+                        alt={`${job.data.company} logo`}
+                        class="sm:w-20 sm:h-20 object-contain bg-white/10 rounded-lg mr-4 w-16 h-16"
+                      />
+                    )}
+                    <div>
+                      <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+                        {job.data.position}
+                      </h3>
+                      <p class="text-lg text-blue-600 dark:text-blue-400 font-medium">
+                        {job.data.company}
+                      </p>
+                      <p class="text-gray-600 dark:text-gray-400">
+                        {job.data.location}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div class="text-sm text-gray-500 dark:text-gray-400 mt-2 sm:mt-0">
+                    {job.data.startDate.toLocaleDateString("en-US", {
+                      month: "short",
+                      year: "numeric",
+                    })}{" "}
+                    -
+                    {job.data.endDate
+                      ? job.data.endDate.toLocaleDateString("en-US", {
+                          month: "short",
+                          year: "numeric",
+                        })
+                      : "Present"}
+                  </div>
+                </div>
+
+                <p class="text-gray-700 dark:text-gray-300 mb-4">
+                  {job.data.description}
+                </p>
+
+                {job.data.achievements.length > 0 && (
+                  <div class="mb-4">
+                    <h4 class="font-medium text-gray-900 dark:text-white mb-2">
+                      Key Achievements:
+                    </h4>
+                    <ul class="list-disc list-inside space-y-1">
+                      {job.data.achievements.map((achievement) => (
+                        <li
+                          markdown
+                          class="text-gray-700 dark:text-gray-300"
+                          set:html={achievement}
+                        ></li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+
+                {job.data.technologies.length > 0 && (
+                  <div class="flex flex-wrap gap-2">
+                    {job.data.technologies.map((tech) => (
+                      <span class="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-sm rounded-full">
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                )}
+
+                <a
+                  href={`/jobs/${job.slug}`}
+                  class="inline-flex items-center text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 font-medium mt-4"
+                >
+                  Read more
+                  <svg
+                    class="w-4 h-4 ml-2"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M9 5l7 7-7 7"
+                    />
+                  </svg>
+                </a>
+              </article>
+            ))
+          }
+        </div>
+      </section>
+
+      <!-- Education -->
+      <section class="mb-12">
+        <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+          Education
+        </h2>
+        <div class="space-y-6">
+          {
+            education.map((edu) => (
+              <article class="bg-white dark:bg-slate-800 rounded-lg p-6 shadow-sm border border-gray-200 dark:border-gray-700">
+                <div class="flex flex-col sm:flex-row sm:justify-between mb-4">
+                  <div class="flex flex-row">
+                    {edu.data.logo && (
+                      <img
+                        src={edu.data.logo}
+                        alt={`${edu.data.institution} logo`}
+                        class="sm:w-20 sm:h-20 object-contain bg-white/10 rounded-lg mr-4 w-16 h-16"
+                      />
+                    )}
+                    <div>
+                      <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+                        {edu.data.program}
+                      </h3>
+                      <p class="text-lg text-blue-600 dark:text-blue-400 font-medium">
+                        {edu.data.institution}
+                      </p>
+                      <p class="text-gray-600 dark:text-gray-400">
+                        {edu.data.location}
+                      </p>
+                    </div>
+                  </div>
+                  <div class="text-sm text-gray-500 dark:text-gray-400 mt-2 sm:mt-0">
+                    {edu.data.startDate.toLocaleDateString("en-US", {
+                      month: "short",
+                      year: "numeric",
+                    })}{" "}
+                    -
+                    {edu.data.endDate
+                      ? edu.data.endDate.toLocaleDateString("en-US", {
+                          month: "short",
+                          year: "numeric",
+                        })
+                      : "Present"}
+                  </div>
+                </div>
+
+                {edu.data.achievements && edu.data.achievements.length > 0 && (
+                  <div class="mb-4">
+                    <h4 class="font-medium text-gray-900 dark:text-white mb-2">
+                      Key Achievements:
+                    </h4>
+                    <ul class="list-disc list-inside space-y-1">
+                      {edu.data.achievements.map((achievement: string) => (
+                        <li class="text-gray-700 dark:text-gray-300">
+                          {achievement}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+
+                {edu.data.relatedDiplomas &&
+                  edu.data.relatedDiplomas.length > 0 && (
+                    <div class="mb-4">
+                      <h4 class="font-medium text-gray-900 dark:text-white mb-2">
+                        Related Diplomas:
+                      </h4>
+                      <div class="flex flex-wrap gap-2">
+                        {edu.data.relatedDiplomas.map((diploma: string) => {
+                          const foundDiploma = diplomas.find(
+                            (d) => d.slug === diploma
+                          );
+                          return foundDiploma ? (
+                            <a
+                              href={`/diplomas/${diploma}`}
+                              class="px-3 py-1 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 text-sm rounded-full hover:bg-green-200 dark:hover:bg-green-800 transition-colors"
+                            >
+                              {foundDiploma.data.degree}
+                            </a>
+                          ) : (
+                            <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-sm rounded-full">
+                              {diploma}
+                            </span>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  )}
+
+                <a
+                  href={`/education/${edu.slug}`}
+                  class="inline-flex items-center text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 font-medium"
+                >
+                  Read more
+                  <svg
+                    class="w-4 h-4 ml-2"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M9 5l7 7-7 7"
+                    />
+                  </svg>
+                </a>
+              </article>
+            ))
+          }
+        </div>
+      </section>
+
+      <!-- Diplomas & Certifications -->
+      <section class="mb-12">
+        <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+          Diplomas & Certifications
+        </h2>
+        <div class="space-y-6">
+          {
+            diplomas.map((diploma) => (
+              <article class="bg-white dark:bg-slate-800 rounded-lg p-6 shadow-sm border border-gray-200 dark:border-gray-700">
+                <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between mb-4">
+                  <div class="flex flex-row">
+                    {diploma.data.logo && (
+                      <img
+                        src={diploma.data.logo}
+                        alt={`${diploma.data.institution} logo`}
+                        class="sm:w-20 sm:h-20 object-contain bg-white/10 rounded-lg mr-4 w-16 h-16"
+                      />
+                    )}
+                    <div>
+                      <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+                        {diploma.data.degree}
+                      </h3>
+                      <p class="text-lg text-blue-600 dark:text-blue-400 font-medium">
+                        {diploma.data.institution}
+                      </p>
+                      <p class="text-gray-600 dark:text-gray-400">
+                        {diploma.data.field} • {diploma.data.location}
+                      </p>
+                    </div>
+                  </div>
+                  <div class="text-sm text-gray-500 dark:text-gray-400 mt-2 sm:mt-0">
+                    {diploma.data.date.toLocaleDateString("en-US", {
+                      month: "short",
+                      year: "numeric",
+                    })}
+                  </div>
+                </div>
+
+                <p class="text-gray-700 dark:text-gray-300">
+                  {diploma.data.description}
+                </p>
+
+                {diploma.data.score && (
+                  <div class="mt-4">
+                    <span class="inline-flex items-center px-3 py-1 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 text-sm rounded-full font-medium">
+                      📊 Score: {diploma.data.score}
+                    </span>
+                    {diploma.data.level && (
+                      <span class="inline-flex items-center px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-sm rounded-full font-medium ml-2">
+                        🎯 Level: {diploma.data.level}
+                      </span>
+                    )}
+                  </div>
+                )}
+
+                {diploma.data.recertification && (
+                  <div class="mt-4">
+                    <span class="inline-flex items-center px-3 py-1 bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-200 text-sm rounded-full font-medium">
+                      🔄 Recertified:{" "}
+                      {new Date(
+                        diploma.data.recertification
+                      ).toLocaleDateString("en-US", {
+                        month: "short",
+                        year: "numeric",
+                      })}
+                    </span>
+                  </div>
+                )}
+
+                {diploma.data.comments.length > 0 && (
+                  <div class="mt-4">
+                    <div class="flex flex-wrap gap-2">
+                      {diploma.data.comments.map((comment: string) => (
+                        <span class="px-3 py-1 bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 text-sm rounded-full">
+                          {comment}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </article>
+            ))
+          }
+        </div>
+      </section>
+
+      <!-- Hackathons -->
+      <section class="mb-12">
+        <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+          Hackathons & Competitions
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {
+            hackathons
+              .filter((h) => h.data.tags && h.data.tags.includes("Victory"))
+              .slice(0, 4)
+              .map((hackathon) => {
+                // Categorize hackathons by type
+                const isWinner =
+                  hackathon.data.tags &&
+                  hackathon.data.tags.includes("Victory");
+                const isJury =
+                  hackathon.data.tags &&
+                  (hackathon.data.tags.includes("Jury") ||
+                    hackathon.data.tags.includes("Judge"));
+                const isCoaching =
+                  hackathon.data.tags &&
+                  (hackathon.data.tags.includes("Coach") ||
+                    hackathon.data.tags.includes("Mentor"));
+
+                const role = isWinner
+                  ? "winner"
+                  : isJury
+                    ? "jury"
+                    : isCoaching
+                      ? "coach"
+                      : "participant";
+
+                return (
+                  <article
+                    class={`bg-white dark:bg-slate-800 rounded-lg p-6 shadow-sm border ${
+                      isWinner
+                        ? "dark:border-yellow-200 border-yellow-500"
+                        : isCoaching
+                          ? "dark:border-blue-200 border-blue-500"
+                          : "dark:border-purple-200 border-purple-500"
+                    }`}
+                  >
+                    <div class="mb-4">
+                      <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-1">
+                        {hackathon.data.title}
+                      </h3>
+                      <p class="text-blue-600 dark:text-blue-400 font-medium">
+                        {hackathon.data.event}
+                      </p>
+                      <p class="text-sm text-gray-500 dark:text-gray-400">
+                        {hackathon.data.date.toLocaleDateString("en-US", {
+                          year: "numeric",
+                          month: "long",
+                          day: "numeric",
+                        })}{" "}
+                        • {hackathon.data.location}
+                      </p>
+                    </div>
+
+                    <p class="text-gray-700 dark:text-gray-300 mb-4">
+                      {hackathon.data.description}
+                    </p>
+
+                    {hackathon.data.result && (
+                      <div class="mb-4">
+                        <span class="inline-flex items-center px-3 py-1 bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-200 text-sm rounded-full font-medium">
+                          {hackathon.data.result}
+                        </span>
+                      </div>
+                    )}
+
+                    <div class="flex flex-wrap gap-2 mb-4">
+                      {hackathon.data.technologies.slice(0, 3).map((tech) => (
+                        <span class="px-2 py-1 bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 text-xs rounded">
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+
+                    <a
+                      href={`/hackathons/${hackathon.slug}`}
+                      class="inline-flex items-center text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 font-medium"
+                    >
+                      Read Full Story
+                      <svg
+                        class="w-4 h-4 ml-2"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M9 5l7 7-7 7"
+                        />
+                      </svg>
+                    </a>
+                  </article>
+                );
+              })
+          }
+        </div>
+
+        {
+          hackathons.length > 4 && (
+            <div class="text-center mt-8">
+              <a
+                href="/hackathons"
+                class="inline-flex items-center px-6 py-3 border border-gray-300 dark:border-gray-600 text-base font-medium rounded-lg text-gray-700 dark:text-gray-300 bg-white dark:bg-slate-800 hover:bg-gray-50 dark:hover:bg-slate-700 transition-colors"
+              >
+                View All Hackathons
+              </a>
+            </div>
+          )
+        }
+      </section>
+
+      <!-- Technical Skills -->
+      <section class="mb-12">
+        <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+          Technical Skills
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {
+            Object.entries(skillsByCategory).map(
+              ([category, categorySkills]) => (
+                <div class="bg-white dark:bg-slate-800 rounded-lg p-6 shadow-sm border border-gray-200 dark:border-gray-700">
+                  <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">
+                    {category}
+                  </h3>
+                  <div class="space-y-3">
+                    {categorySkills.map((skill) => (
+                      <div class="flex items-center justify-between">
+                        <span class="text-gray-700 dark:text-gray-300">
+                          {skill.name}
+                        </span>
+                        <div class="flex items-center space-x-2">
+                          <span class="text-sm text-gray-500 dark:text-gray-400 capitalize">
+                            {skill.level}
+                          </span>
+                          <div class="flex space-x-1">
+                            {[...Array(5)].map((_, i) => (
+                              <div
+                                class={`w-2 h-2 rounded-full ${
+                                  i <
+                                  (skill.level === "expert"
+                                    ? 5
+                                    : skill.level === "advanced"
+                                      ? 4
+                                      : skill.level === "intermediate"
+                                        ? 3
+                                        : skill.level === "beginner"
+                                          ? 2
+                                          : 1)
+                                    ? "bg-blue-500"
+                                    : "bg-gray-300 dark:bg-gray-600"
+                                }`}
+                              />
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )
+            )
+          }
+        </div>
+      </section>
+
+      <!-- Download Resume -->
+      <section class="text-center">
+        <a
+          href="/resume.pdf"
+          download
+          class="inline-flex items-center px-8 py-3 border border-transparent text-lg font-medium rounded-lg text-white bg-blue-600 hover:bg-blue-700 transition-colors"
+        >
+          <svg
+            class="w-5 h-5 mr-2"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+            ></path>
+          </svg>
+          Download PDF Resume
+        </a>
+      </section>
+    </div>
+  </div>
+</MainLayout>

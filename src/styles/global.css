@@ -1,0 +1,96 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Brand Colors for Francois Raminosona - Enhanced Contrast */
+:root {
+  --light-blue: #215f9a;
+  --dark-blue: rgb(11, 48, 65);
+  --darker-blue: #06222f;
+  --gray-tint: rgba(64, 80, 128, 0.1);
+  --white: white;
+  --off-white: #f8faff;
+
+  /* Enhanced contrast colors */
+  --accent-blue: #4a90d9;      /* Lighter blue for better contrast */
+  --text-on-dark: #ffffff;     /* Pure white for dark backgrounds */
+  --text-on-light: #1a1a1a;    /* Near black for light backgrounds */
+  --border-light: #e2e8f0;     /* Light border for contrast */
+  --border-dark: #374151;      /* Dark border for contrast */
+  --hover-light: #f1f5f9;      /* Light hover state */
+  --hover-dark: #334155;       /* Dark hover state */
+
+  /* Brand color utilities with proper contrast */
+  --primary: var(--light-blue);
+  --primary-light: var(--accent-blue);
+  --primary-dark: var(--dark-blue);
+  --primary-darker: var(--darker-blue);
+  --accent: var(--gray-tint);
+  --background: var(--white);
+  --background-alt: var(--off-white);
+  --text-primary: var(--text-on-light);
+  --text-secondary: #6b7280;
+  --border-color: var(--border-light);
+}
+
+/* Dark mode overrides with proper contrast */
+html.dark {
+  --background: var(--darker-blue);
+  --background-alt: var(--dark-blue);
+  --text-primary: var(--text-on-dark);
+  --text-secondary: #9ca3af;
+  --border-color: var(--border-dark);
+  --primary-light: var(--accent-blue);
+}
+
+/* Brand color utility classes with contrast */
+.bg-brand-primary { background-color: var(--primary); color: var(--text-on-dark); }
+.bg-brand-light { background-color: var(--primary-light); color: var(--text-on-dark); }
+.bg-brand-dark { background-color: var(--primary-dark); color: var(--text-on-dark); }
+.bg-brand-darker { background-color: var(--primary-darker); color: var(--text-on-dark); }
+.bg-brand-accent { background-color: var(--accent); }
+.bg-brand-background { background-color: var(--background); }
+.bg-brand-background-alt { background-color: var(--background-alt); }
+
+.text-brand-primary { color: var(--primary); }
+.text-brand-light { color: var(--primary-light); }
+.text-brand-dark { color: var(--primary-dark); }
+.text-brand-darker { color: var(--primary-darker); }
+.text-brand-white { color: var(--text-on-dark); }
+.text-brand-contrast { color: var(--text-primary); }
+
+.border-brand-primary { border-color: var(--primary); }
+.border-brand-light { border-color: var(--primary-light); }
+.border-brand-dark { border-color: var(--primary-dark); }
+.border-brand-accent { border-color: var(--accent); }
+.border-brand-contrast { border-color: var(--border-color); }
+
+.hover\:bg-brand-light:hover { background-color: var(--primary-light); }
+.hover\:bg-brand-primary:hover { background-color: var(--primary); }
+.hover\:text-brand-light:hover { color: var(--primary-light); }
+.hover\:text-brand-primary:hover { color: var(--primary); }
+
+header {
+  background-size: cover;
+  background-position: center;
+}
+
+.object-cover {
+  overflow: hidden;
+}
+
+.cover_bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  z-index: -1;
+  filter: blur(10px);
+  transform: scale(1.1);
+}
+
+.cover_image {
+  max-width: 100%;
+  max-height: 100%;
+}
