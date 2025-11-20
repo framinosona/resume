@@ -1,7 +1,7 @@
 ---
 title: "Scribzee by OXFORD"
 description: "Cross-platform document scanning app for OXFORD notebooks developed with Xamarin, enabling users to scan, save, and organize handwritten content digitally."
-bannerImage: "/banners/banner_scribzee.jpg"
+bannerImage: "/banners/banner_project_scribzee.jpg"
 isFeatured: false
 startDate: 2016-06-01
 endDate: 2017-01-31

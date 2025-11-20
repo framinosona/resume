@@ -1,7 +1,7 @@
 ---
 title: "CPRmeter 2"
 description: "The CPRmeter App was developed to be used with Laerdal's CPRmeter 2 device. By transferring clinical CPR data stored in the CPRmeter 2 device, users can debrief their performance with much higher fidelity feedback, edit specific episodes, and easily share their performance with their quality managers and team members."
-bannerImage: "/banners/banner_cprmeter.jpg"
+bannerImage: "/banners/banner_project_cprmeter.jpg"
 isFeatured: false
 startDate: 2019-03-27
 technologies:

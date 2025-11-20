@@ -1,8 +1,8 @@
 ---
 title: "SkillReporter"
 description: "The Skillreporter app is a great tool for healthcare professionals who want to improve their CPR training on infants, children and adults."
-bannerImage: "/banners/banner_skillreporter.jpg"
-isFeatured: false
+bannerImage: "/banners/banner_project_skillreporter.jpg"
+isFeatured: true
 startDate: 2020-01-01
 technologies:
   - ".NET/C#"

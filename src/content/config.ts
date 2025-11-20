@@ -7,7 +7,12 @@ const projects = defineCollection({
     // Basic info
     title: z.string(), // ex : "GOOD - GO-OnDemand"
     description: z.string(), // ex: "A mobile app for resort management"
-    bannerImage: z.string().optional().default("https://placehold.co/600x400"),
+    bannerImage: z
+      .string()
+      .optional()
+      .default(
+        "https://placehold.co/600x400/transparent/808080?text=No+banner+image"
+      ),
     isFeatured: z.boolean().default(false),
 
     // Dates
@@ -43,17 +48,22 @@ const hackathons = defineCollection({
     title: z.string(),
     company: z.string().optional(), // Hosting company/organization
     description: z.string(),
-    featured: z.boolean().default(false),
+    bannerImage: z
+      .string()
+      .optional()
+      .default(
+        "https://placehold.co/600x400/transparent/808080?text=No+banner+image"
+      ),
+
+    date: z.date(),
     location: z.string(),
+    duration: z.string(), // e.g., "48 hours", "3 days"
     teamSize: z.string().optional(), // e.g., "4 (Team lead role)", "3 (Development team)", "N/A (Coach role)"
     result: z.string().optional(), // e.g., "1st Place", "Best Innovation Award"
 
-    // Dates
-    date: z.date(),
-    duration: z.string(), // e.g., "48 hours", "3 days"
+    isFeatured: z.boolean().default(false),
 
     // Media
-    image: z.string().optional().default("https://placehold.co/600x400"),
     gallery: z.array(z.string()).optional(),
 
     // Lists
@@ -63,7 +73,7 @@ const hackathons = defineCollection({
     // Links
     githubUrl: z.string().optional(),
     liveUrl: z.string().optional(),
-    devpostUrl: z.string().optional(),
+    youtubeUrls: z.array(z.string()).optional(),
 
     // Related
     relatedProject: z.string().optional(),
@@ -80,14 +90,20 @@ const jobs = defineCollection({
     location: z.string(),
     description: z.string(),
     current: z.boolean().default(false),
-    featured: z.boolean().default(false),
+    isFeatured: z.boolean().default(false),
+    isPartTime: z.boolean().default(false),
 
     // Dates
     startDate: z.date(),
     endDate: z.date().optional(),
 
     // Media
-    logo: z.string().optional().default("https://placehold.co/100x100"),
+    logo: z
+      .string()
+      .optional()
+      .default(
+        "https://placehold.co/100x100/transparent/808080?text=No+logo"
+      ),
     gallery: z.array(z.string()).optional(),
 
     // Lists
@@ -109,14 +125,14 @@ const education = defineCollection({
     program: z.string(), // e.g., "IT Engineering Program", "Xamarin University Program"
     location: z.string(),
     description: z.string().optional(),
-    featured: z.boolean().default(false),
+    isFeatured: z.boolean().default(false),
 
     // Dates
     startDate: z.date(),
     endDate: z.date(),
 
     // Media
-    logo: z.string().optional().default("https://placehold.co/100x100"),
+    logo: z.string().optional().default("https://placehold.co/100x100/transparent/808080?text=No+logo"),
     gallery: z.array(z.string()).optional(),
 
     // Lists
@@ -125,7 +141,7 @@ const education = defineCollection({
     tags: z.array(z.string()).default([]),
 
     // Related
-    relatedDiplomas: z.array(z.string()).default([]) // References to diploma slugs
+    relatedDiplomas: z.array(z.string()).default([]), // References to diploma slugs
   }),
 });
 
@@ -144,14 +160,14 @@ const diplomas = defineCollection({
     score: z.string().optional(), // For certifications like TOEIC
     level: z.string().optional(), // For language certifications
     recertification: z.string().optional(), // For Xamarin recertification
-    featured: z.boolean().default(false),
+    isFeatured: z.boolean().default(false),
 
     // Dates
     date: z.date(), // Only end date
 
     // Media
-    logo: z.string().optional().default("https://placehold.co/100x100"),
-    gallery: z.array(z.string()).optional()
+    logo: z.string().optional().default("https://placehold.co/100x100/transparent/808080?text=No+logo"),
+    gallery: z.array(z.string()).optional(),
   }),
 });
 
@@ -169,7 +185,7 @@ export const collections = {
   projects,
   hackathons,
   jobs,
-  education, // Back to education
+  education,
   diplomas,
   skills,
 };

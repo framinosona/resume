@@ -1,7 +1,7 @@
 ---
-title: "GoneToLyon - AR Tourism Platform"
+title: "GoneToLyon"
 description: "Award-winning augmented reality tourism application for Lyon, France, combining real-time AR overlays with open data integration. Winner of 1st National Prize at Microsoft DevKings Challenge."
-bannerImage: "/banners/banner_gonetolyon.jpg"
+bannerImage: "/banners/banner_project_gonetolyon.jpg"
 isFeatured: false
 startDate: 2013-07-01
 endDate: 2013-10-31

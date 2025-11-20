@@ -1,6 +1,8 @@
 ---
 import { getCollection } from "astro:content";
 import MainLayout from "../layouts/MainLayout.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+import HackathonCard from "../components/HackathonCard.astro";
 
 const featuredProjects = await getCollection(
   "projects",
@@ -9,6 +11,16 @@ const featuredProjects = await getCollection(
 featuredProjects.sort(
   (a, b) => b.data.startDate.valueOf() - a.data.startDate.valueOf()
 );
+
+const featuredHackathons = await getCollection(
+  "hackathons",
+  ({ data }) => data.isFeatured
+);
+featuredHackathons.sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+);
+
+const viewMoreStyle = "inline-flex items-center px-6 py-3 border border-brand-primary text-base font-medium rounded-lg bg-brand-primary hover:bg-brand-secondary hover:text-white transition-colors";
 ---
 
 <MainLayout
@@ -18,7 +30,7 @@ featuredProjects.sort(
   <!-- Hero Section -->
   <section
     class="relative text-white"
-    style="background-image: url('banners/banner_framinosona_4.webp'); background-size: cover; background-position: center; background-blend-mode: overlay;"
+    style="background-image: url('banners/banner_framinosona_4.jpg'); background-size: cover; background-position: center; background-blend-mode: overlay;"
   >
     <!-- Light mode overlay - light blue uniform -->
     <div class="absolute inset-0 bg-slate-200/80 dark:hidden"></div>
@@ -28,7 +40,7 @@ featuredProjects.sort(
     <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32">
       <div class="text-center">
         <img
-          src="images/profile/profile_1.jpg"
+          src="profile/profile_1.jpg"
           alt="Francois Raminosona"
           class="w-32 h-32 rounded-full mx-auto mb-12 border-4 border-white shadow-lg"
         />
@@ -44,20 +56,12 @@ featuredProjects.sort(
         >
           .NET / Mobile / Tech-team Lead / Software architect
         </p>
-        <div class="flex flex-col sm:flex-row gap-4 justify-center">
           <a
             href="/resume"
             class="inline-flex items-center px-8 py-3 border border-transparent text-lg font-medium rounded-lg bg-brand-dark hover:bg-brand-primary text-white dark:bg-yellow-400 dark:hover:bg-yellow-300 dark:text-gray-900 transition-colors shadow-lg"
           >
             View Resume
           </a>
-          <a
-            href="/projects"
-            class="inline-flex items-center px-8 py-3 border-2 border-brand-primary text-lg font-medium rounded-lg text-brand-primary hover:bg-brand-primary hover:text-white dark:border-white dark:text-white dark:hover:bg-white dark:hover:text-gray-900 transition-colors shadow-lg"
-          >
-            Explore Projects
-          </a>
-        </div>
       </div>
 
       <!-- Quick Stats -->
@@ -114,58 +118,16 @@ featuredProjects.sort(
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {
-          featuredProjects.slice(0, 3).map((project) => (
-            <article class="bg-white dark:bg-slate-800 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
-              {project.data.bannerImage && (
-                <img
-                  src={project.data.bannerImage}
-                  alt={project.data.title}
-                  class="w-full h-48 object-cover"
-                />
-              )}
-              <div class="p-6">
-                <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">
-                  {project.data.title}
-                </h3>
-                <p class="text-gray-600 dark:text-gray-300 mb-4">
-                  {project.data.description}
-                </p>
-                <div class="flex flex-wrap gap-2 mb-4">
-                  {project.data.technologies.slice(0, 3).map((tech) => (
-                    <span class="px-3 py-1 bg-brand-primary/10 text-brand-primary text-sm rounded-full">
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-                <a
-                  href={`/projects/${project.slug}`}
-                  class="inline-flex items-center text-brand-primary hover:text-brand-secondary font-medium"
-                >
-                  Learn More
-                  <svg
-                    class="w-4 h-4 ml-2"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M9 5l7 7-7 7"
-                    />
-                  </svg>
-                </a>
-              </div>
-            </article>
-          ))
+          featuredProjects
+            .slice(0, 6)
+            .map((project) => <ProjectCard project={project} showReadMore={false} />)
         }
       </div>
 
       <div class="text-center mt-12">
         <a
           href="/projects"
-          class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-lg text-white bg-brand-primary hover:bg-brand-secondary transition-colors"
+          class={viewMoreStyle}
         >
           View All Projects
         </a>
@@ -173,8 +135,39 @@ featuredProjects.sort(
     </div>
   </section>
 
-  <!-- Skills Overview -->
+  <!-- Featured Hackathons -->
   <section class="py-16 bg-gray-50 dark:bg-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+          Featured Hackathons
+        </h2>
+        <p class="text-xl text-gray-600 dark:text-gray-300">
+          Highlights from competitive coding events and innovation challenges
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {
+          featuredHackathons
+            .slice(0, 3)
+            .map((hackathon) => <HackathonCard hackathon={hackathon} showReadMore={false} />)
+        }
+      </div>
+
+      <div class="text-center mt-12">
+        <a
+          href="/hackathons"
+          class={viewMoreStyle}
+        >
+          View All Hackathons
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Overview -->
+  <section class="py-16 bg-white dark:bg-slate-900">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-12">
         <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">
@@ -201,10 +194,8 @@ featuredProjects.sort(
             "HTML5/CSS3/JS",
             "UnitTests",
           ].map((skill) => (
-            <div class="bg-white dark:bg-slate-900 rounded-lg p-4 text-center shadow-sm hover:shadow-md transition-shadow">
-              <div class="text-lg font-semibold text-gray-900 dark:text-white">
-                {skill}
-              </div>
+            <div class="bg-brand-light dark:bg-brand-dark rounded-lg p-4 text-center shadow-sm hover:shadow-md transition-shadow">
+              <div class="text-lg font-semibold">{skill}</div>
             </div>
           ))
         }
@@ -213,7 +204,7 @@ featuredProjects.sort(
       <div class="text-center mt-12">
         <a
           href="/resume"
-          class="inline-flex items-center px-6 py-3 border border-brand-primary text-base font-medium rounded-lg text-brand-primary bg-white dark:bg-slate-900 hover:bg-brand-primary hover:text-white transition-colors"
+          class={viewMoreStyle}
         >
           View Full Resume
         </a>

@@ -1,7 +1,7 @@
 ---
 title: "QCPR"
 description: "Advanced digital CPR training solution that provides real-time feedback and comprehensive debriefing tools for instructors teaching life-saving resuscitation skills with QCPR-enabled training manikins."
-bannerImage: "/banners/banner_qcpr.jpg"
+bannerImage: "/banners/banner_project_qcpr.jpg"
 isFeatured: false
 startDate: 2022-01-01
 technologies:

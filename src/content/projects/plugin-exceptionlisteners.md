@@ -1,7 +1,7 @@
 ---
 title: "Plugin.ExceptionListeners"
 description: "An open-source exception listening framework for .NET applications, providing unified exception handling across different exception sources and MAUI cross-platform applications."
-bannerImage: "/banners/banner_exception.jpg"
+bannerImage: "/banners/banner_project_exception.jpg"
 isFeatured: true
 startDate: 2025-06-01
 endDate: 2025-10-01

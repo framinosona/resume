@@ -1,7 +1,7 @@
 ---
 title: "Eyes App"
 description: "Advanced social media management app with Azure backend and Xamarin native frontend, featuring unified account management and social media analytics."
-bannerImage: "/banners/banner_eyes.jpg"
+bannerImage: "/banners/banner_project_eyes.jpg"
 isFeatured: false
 startDate: 2017-01-01
 endDate: 2018-06-30

@@ -1,7 +1,7 @@
 ---
 title: "TeamReporter"
 description: "TeamReporter is a video application specifically designed for high-performance CPR training. With real-time CPR feedback, tips for improving and video debriefing, the TeamReporter app is your organization's assistant coach. It allows you to create, train and train high-performance CPR teams."
-bannerImage: "/projects/TeamReporter/banner.jpg"
+bannerImage: "/banners/banner_project_teamreporter.jpg"
 isFeatured: false
 startDate: 2020-01-01
 endDate: 2023-12-31

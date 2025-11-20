@@ -2,25 +2,25 @@
 position: "Mobile Developer/Xamarin Consulting & Expertise"
 company: "Cellenza"
 location: "Greater Paris Metropolitan Region, France"
-description: "Provided cross-platform mobile development expertise for enterprise clients, delivering Xamarin-based applications with native performance on iOS and Android. Led iOS development for Oxford's Scribzee document scanning app and contributed to Rothschild & Co's mobile banking frontend, combining Xamarin.Forms with Azure backend integration. Worked within agile teams, driving UX/UI improvements and ensuring production-ready solutions that balanced technical quality with client needs."
+description: "Provided **cross-platform mobile development expertise** for enterprise clients, delivering *Xamarin-based applications* with native performance on iOS and Android. Led **iOS development** for Oxford's *Scribzee document scanning app* and contributed to **Rothschild & Co's mobile banking frontend**, combining Xamarin.Forms with Azure backend integration. Worked within agile teams, driving **UX/UI improvements** and ensuring production-ready solutions that balanced technical quality with client needs."
 current: false
 startDate: 2016-06-01
 endDate: 2017-01-31
 logo: "/logos/cellenza.png"
 achievements:
-  - "Led iOS development for Scribzee document scanning app with cross-platform Xamarin architecture"
-  - "Contributed to Rothschild & Co Mobile Banking frontend development using Xamarin Forms"
-  - "Participated in Scrum methodology with daily meetings in agile development teams"
-  - "Provided UX/UI design consultation and implemented visual improvements"
-  - "Delivered Azure backend integration for mobile applications"
+  - "Led **iOS development** for *Scribzee document scanning app* with cross-platform Xamarin architecture"
+  - "Contributed to **Rothschild & Co Mobile Banking** frontend development using *Xamarin.Forms*"
+  - "Participated in **Scrum methodology** with daily meetings in agile development teams"
+  - "Provided **UX/UI design consultation** and implemented visual improvements"
+  - "Delivered **Azure backend integration** for mobile applications"
 technologies:
   - "Xamarin"
   - "Xamarin.Forms"
-  - "iOS Development"
-  - "Android Development"
+  - "iOS"
+  - "Android"
   - "Azure"
-  - "Cross-platform Development"
-  - "Mobile UX/UI"
+  - "C#"
+  - "UX/UI Design"
   - "Scrum/Agile"
 tags:
   - "Mobile Development"
@@ -30,7 +30,9 @@ tags:
   - "Banking"
   - "Document Scanning"
   - "UX/UI Design"
-relatedProjects: []
+relatedProjects:
+  - "cellenza-rothschild"
+  - "cellenza-scribzee"
 ---
 
 # Mobile Developer/Xamarin Consulting & Expertise - Cellenza

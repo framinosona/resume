@@ -8,7 +8,7 @@ export interface Props {
 
 const {
   title,
-  description = "Francois Raminosona - Developer, Tech Enthusiast & Creative Professional. Explore my portfolio, projects, and insights.",
+  description = "Francois Raminosona - Ethical Software Architect, Developer Experience Lead, Traveler and Photographer",
   image,
   type = "website",
 } = Astro.props;
@@ -43,6 +43,32 @@ import "../styles/global.css";
       property="twitter:image"
       content={image ? new URL(image, Astro.url) : undefined}
     />
+
+    <!-- Facebook Profile -->
+    <meta property="fb:app_id" content="966242223397117" />
+    <meta property="profile:first_name" content="François" />
+    <meta property="profile:last_name" content="Raminosona" />
+    <meta property="profile:gender" content="male" />
+    <meta property="profile:username" content="Framinosona" />
+
+    <!-- https://developers.google.com/search/docs/data-types/social-profile -->
+    <script type="application/ld+json">
+      {
+        "@context": "http://schema.org",
+        "@type": "Person",
+        "name": "François Raminosona",
+        "url": "{Astro.url}",
+        "sameAs": [
+          "https://www.facebook.com/NewHammerhead73",
+          "https://x.com/Framinosona",
+          "https://www.instagram.com/framinosona",
+          "https://www.linkedin.com/in/framinosona",
+          "https://m.me/NewHammerhead73",
+          "https://github.com/framinosona",
+          "https://www.betaseries.com/membre/Hammerhead73"
+        ]
+      }
+    </script>
 
     <title>
       {

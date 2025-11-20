@@ -1,7 +1,7 @@
 ---
 title: "Plugin.BaseTypeExtensions"
 description: "An open-source collection of extension methods for .NET base types, designed to enhance productivity, type safety, and code readability in modern .NET applications."
-bannerImage: "/banners/banner_typeextension.jpg"
+bannerImage: "/banners/banner_project_typeextension.jpg"
 isFeatured: true
 startDate: 2024-12-01
 technologies:

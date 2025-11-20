@@ -1,0 +1,143 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  diploma: CollectionEntry<'diplomas'>;
+}
+
+const { diploma } = Astro.props;
+
+// Simple markdown processor for inline formatting
+function processMarkdown(text: string): string {
+  if (!text) return text;
+
+  return text
+    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+    .replace(/__(.*?)__/g, '<strong>$1</strong>')
+    .replace(/(?<!\*)\*([^*]+?)\*(?!\*)/g, '<em>$1</em>')
+    .replace(/(?<!_)_([^_]+?)_(?!_)/g, '<em>$1</em>')
+    .replace(/`([^`]+?)`/g, '<code class="bg-gray-100 dark:bg-gray-800 px-1 py-0.5 rounded text-sm">$1</code>')
+    .replace(/\[([^\]]+?)\]\(([^)]+?)\)/g, '<a href="$2" class="text-green-600 hover:text-green-800 dark:text-green-400 dark:hover:text-green-300 underline">$1</a>');
+}
+---
+
+<article class="diploma-card bg-white dark:bg-slate-800 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow border border-gray-200 dark:border-gray-700">
+  <div class="p-6">
+    <div class="flex items-start justify-between mb-4">
+      <div class="flex items-start space-x-4">
+        {diploma.data.logo && (
+          <img
+            src={diploma.data.logo}
+            alt={`${diploma.data.institution} logo`}
+            class="w-12 h-12 object-contain bg-white/10 rounded-lg"
+          />
+        )}
+        <div>
+          <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-1">
+            {diploma.data.degree}
+          </h3>
+          <p class="text-lg text-green-600 dark:text-green-400 font-medium">
+            {diploma.data.institution}
+          </p>
+          <p class="text-sm text-gray-600 dark:text-gray-400">
+            {diploma.data.field}
+          </p>
+          <p class="text-sm text-gray-500 dark:text-gray-500">
+            {diploma.data.location}
+          </p>
+        </div>
+      </div>
+      <div class="text-right">
+        <div class="text-sm text-gray-500 dark:text-gray-400">
+          {diploma.data.date.toLocaleDateString("en-US", {
+            month: "short",
+            year: "numeric",
+          })}
+        </div>
+        {diploma.data.isFeatured && (
+          <span class="inline-flex items-center px-2 py-1 text-xs rounded-full font-medium bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 mt-1">
+            Featured
+          </span>
+        )}
+      </div>
+    </div>
+
+    {diploma.data.description && (
+      <p class="text-gray-700 dark:text-gray-300 mb-4 line-clamp-3" set:html={processMarkdown(diploma.data.description)}>
+      </p>
+    )}
+
+    {diploma.data.score && (
+      <div class="mb-4">
+        <span class="inline-flex items-center px-3 py-1 text-sm rounded-full font-medium bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200">
+          Score: {diploma.data.score}
+        </span>
+      </div>
+    )}
+
+    {diploma.data.level && (
+      <div class="mb-4">
+        <span class="inline-flex items-center px-3 py-1 text-sm rounded-full font-medium bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200">
+          Level: {diploma.data.level}
+        </span>
+      </div>
+    )}
+
+    {diploma.data.comments.length > 0 && (
+      <div class="mb-4">
+        <h4 class="font-medium text-gray-900 dark:text-white mb-2 text-sm">
+          Comments:
+        </h4>
+        <ul class="list-disc list-inside space-y-1">
+          {diploma.data.comments.slice(0, 3).map((comment) => (
+            <li class="text-sm text-gray-700 dark:text-gray-300 line-clamp-2" set:html={processMarkdown(comment)}>
+            </li>
+          ))}
+          {diploma.data.comments.length > 3 && (
+            <li class="text-sm text-gray-500 dark:text-gray-400 italic">
+              +{diploma.data.comments.length - 3} more comments...
+            </li>
+          )}
+        </ul>
+      </div>
+    )}
+    )}
+
+    {diploma.data.courses.length > 0 && (
+      <div class="flex flex-wrap gap-2 mb-4">
+        {diploma.data.courses.slice(0, 4).map((course) => (
+          <span class="px-2 py-1 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 text-xs rounded">
+            {course}
+          </span>
+        ))}
+        {diploma.data.courses.length > 4 && (
+          <span class="px-2 py-1 bg-gray-100 dark:bg-gray-900 text-gray-600 dark:text-gray-400 text-xs rounded">
+            +{diploma.data.courses.length - 4} more
+          </span>
+        )}
+      </div>
+    )}
+
+    {diploma.data.recertification && (
+      <div class="text-sm text-gray-600 dark:text-gray-400">
+        <strong>Recertification:</strong> {diploma.data.recertification}
+      </div>
+    )}
+  </div>
+</article>
+
+<style>
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+</style>

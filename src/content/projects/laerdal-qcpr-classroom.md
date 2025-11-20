@@ -1,8 +1,8 @@
 ---
 title: "QCPR Classroom"
 description: "CPR training app that lets instructors train Quality CPR to up to 42 students simultaneously with real-time feedback and Bluetooth connectivity."
-bannerImage: "/banners/banner_qcpr_classroom.jpg"
-isFeatured: false
+bannerImage: "/banners/banner_project_qcpr_classroom.jpg"
+isFeatured: true
 startDate: 2019-05-10
 technologies:
   - ".NET/C#"

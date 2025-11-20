@@ -1,7 +1,7 @@
 ---
 title: "Femeco"
 description: "Complete cross-platform application suite developed for Femmes de l'Economie association, featuring Xamarin mobile apps for Windows Phone, Android, and iOS, plus a comprehensive PHP back-office administration system."
-bannerImage: "/banners/banner_femeco.jpg"
+bannerImage: "/banners/banner_project_femeco.jpg"
 isFeatured: false
 startDate: 2015-04-01
 endDate: 2016-04-30
