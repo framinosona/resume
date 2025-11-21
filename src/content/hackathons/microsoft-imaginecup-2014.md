@@ -2,7 +2,7 @@
 title: "ImagineCup 2014"
 company: "Microsoft"
 description: "Video editing application using frame-interpolation algorithms to create smooth slow motion effects from regular video footage."
-bannerImage: "banners/banner_hackathon_imaginecup2014.jpg"
+bannerImage: "/banners/banner_hackathon_imaginecup2014.jpg"
 
 date: 2014-07-01
 location: "France"

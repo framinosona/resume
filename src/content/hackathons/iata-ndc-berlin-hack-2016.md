@@ -2,7 +2,7 @@
 title: "NDC Berlin Hack"
 company: "IATA"
 description: "Aviation industry hackathon focused on New Distribution Capability (NDC) technology innovation where I served as Team Lead, developing next-generation airline distribution solutions."
-bannerImage: "banners/banner_hackathon_iata.jpg"
+bannerImage: "/banners/banner_hackathon_iata.jpg"
 
 date: 2016-09-01
 location: "Berlin, Germany"

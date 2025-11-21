@@ -2,7 +2,7 @@
 title: "Boost Falcon XP"
 company: "Dassault Aviation"
 description: "Aviation innovation hackathon where I served as MVP Tech Coach, specializing in HoloLens, Xamarin, and Unity development for next-generation aircraft technology and mixed reality solutions."
-bannerImage: "banners/banner_hackathon_dassault.jpg"
+bannerImage: "/banners/banner_hackathon_dassault.jpg"
 
 date: 2017-03-01
 location: "Paris, France"

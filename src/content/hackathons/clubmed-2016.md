@@ -2,7 +2,7 @@
 title: "ClubMed Hackathon"
 company: "ClubMed"
 description: "Holiday resort assistant app that allows guests to request anything anytime - the Uber for holiday resorts. Winner of 1st Development Prize."
-bannerImage: "banners/banner_hackathon_clubmed.jpg"
+bannerImage: "/banners/banner_hackathon_clubmed.jpg"
 
 date: 2016-07-01
 location: "Paris, France"

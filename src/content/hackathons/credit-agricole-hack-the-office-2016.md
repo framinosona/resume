@@ -2,7 +2,7 @@
 title: "Hack The Office"
 company: "Crédit Agricole"
 description: "Banking technology hackathon where I participated as a Teammate, contributing to innovative financial technology solutions and digital banking transformation initiatives."
-bannerImage: "banners/banner_hackathon_creditagricole.jpg"
+bannerImage: "/banners/banner_hackathon_creditagricole.jpg"
 
 date: 2016-10-01
 location: "Paris, France"

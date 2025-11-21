@@ -2,7 +2,7 @@
 title: "Hack&Fly"
 company: "Aeroports de Paris & Schiphol Airport"
 description: "Travel automation app that learns user habits and automates airport and travel experiences. Winner of 1st National Prize."
-bannerImage: "banners/banner_hackathon_hackandfly.jpg"
+bannerImage: "/banners/banner_hackathon_hackandfly.jpg"
 
 date: 2016-07-01
 location: "Paris, France (Using I/O)"

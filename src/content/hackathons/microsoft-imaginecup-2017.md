@@ -2,7 +2,7 @@
 title: "ImagineCup 2017"
 company: "Microsoft"
 description: "Served as MVP Coach and Jury member for Microsoft ImagineCup 2017, mentoring student teams and evaluating innovative technology solutions."
-bannerImage: "banners/banner_hackathon_imaginecup2017.jpg"
+bannerImage: "/banners/banner_hackathon_imaginecup2017.jpg"
 
 date: 2017-07-01
 location: "France"

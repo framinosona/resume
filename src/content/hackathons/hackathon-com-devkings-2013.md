@@ -2,7 +2,7 @@
 title: "DevKings 2013"
 company: "Microsoft"
 description: "Tourism app using augmented reality and OpenData to guide users through Lyon's tourist attractions. Winner of 1st National Prize in all categories."
-bannerImage: "banners/banner_hackathon_devkings2013.jpg"
+bannerImage: "/banners/banner_hackathon_devkings2013.jpg"
 
 date: 2013-10-01
 location: "Paris, France"
