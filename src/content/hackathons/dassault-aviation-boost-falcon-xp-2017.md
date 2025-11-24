@@ -5,7 +5,7 @@ description: "Aviation innovation hackathon where I served as MVP Tech Coach, sp
 bannerImage: "/banners/banner_hackathon_dassault.jpg"
 
 date: 2017-03-01
-location: "Paris, France"
+location: "Paris, France (Zalthabar)"
 duration: "48 hours"
 teamSize: "N/A (Coach role)"
 result: "Team Coach"

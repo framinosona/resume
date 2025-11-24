@@ -5,7 +5,7 @@ description: "Holiday resort assistant app that allows guests to request anythin
 bannerImage: "/banners/banner_hackathon_clubmed.jpg"
 
 date: 2016-07-01
-location: "Paris, France"
+location: "Paris, France (Zalthabar)"
 duration: "48h"
 teamSize: "2 (Development partnership)"
 result: "🥇 1st Development Prize"

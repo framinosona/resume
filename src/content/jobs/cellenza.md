@@ -1,7 +1,7 @@
 ---
 position: "Mobile Developer/Xamarin Consulting & Expertise"
 company: "Cellenza"
-location: "Greater Paris Metropolitan Region, France"
+location: "Paris, France"
 description: "Provided **cross-platform mobile development expertise** for enterprise clients, delivering *Xamarin-based applications* with native performance on iOS and Android. Led **iOS development** for Oxford's *Scribzee document scanning app* and contributed to **Rothschild & Co's mobile banking frontend**, combining Xamarin.Forms with Azure backend integration. Worked within agile teams, driving **UX/UI improvements** and ensuring production-ready solutions that balanced technical quality with client needs."
 current: false
 startDate: 2016-06-01
